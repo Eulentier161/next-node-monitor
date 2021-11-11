@@ -45,14 +45,37 @@ interface AccountInfo {
     pending: string;
 }
 
-interface Stat {
-    name: string;
-    value: string;
+interface SystemInfo {
+    systemLoad: number;
+    totalMem: number;
+    usedMem: number;
+}
+
+interface RPCResponse {
+    telemetry: Telemetry;
+    version: Version;
+    accountInfo: AccountInfo;
+    systemInfo: SystemInfo;
 }
 
 interface APIResponse {
-    blockStats: Stat[];
-    nodeStats: Stat[];
-    nodeAccountStats: Stat[];
-    systemStats: Stat[];
+    nodeAccount: string;
+    version: string;
+    store_version: number;
+    protocol_version: number;
+    store_vendor: string;
+    currentBlock: number;
+    uncheckedBlocks: number;
+    cementedBlocks: number;
+    numPeers: number;
+    accBalanceRaw: number;
+    accPendingRaw: number;
+    repAccount: string;
+    votingWeightRaw: number;
+    systemLoad: number;
+    usedMem: number;
+    totalMem: number;
+    nodeName: string;
+    nodeUptime: number;
+    nodeLocation: string;
 }

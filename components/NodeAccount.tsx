@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { GoCheck, GoClippy } from 'react-icons/go';
 
-export default function NodeAccount({ header, item }: { header: string; item: Stat }) {
+export default function NodeAccount() {
     const [clipboardIcon, setClipboardIcon] = useState(<GoClippy size='1.5em' />);
 
     function handleCopyToClipboard() {
@@ -15,11 +15,11 @@ export default function NodeAccount({ header, item }: { header: string; item: St
 
     return (
         <div>
-            <h1 className={styles.header}>{header}</h1>
+            <h1 className={styles.header}>Node Account</h1>
             <div className={styles.wrapper}>
-                <span>{item.name}</span>
+                <span>Address</span>
                 <Link href={`https://yellowspyglass.com/account/${representativeAccount}`} passHref>
-                    <a>{item.value}</a>
+                    <a>{representativeAccount}</a>
                 </Link>
                 <a onClick={() => handleCopyToClipboard()}>{clipboardIcon}</a>
             </div>

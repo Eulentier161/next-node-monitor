@@ -1,62 +1,57 @@
-import { hostname, location, pullFromNode } from '@config';
+import { hostname, location, refreshInterval, representativeAccount } from '@config';
 import { getAccountInfo, getTelemetry, getVersion } from '@helper/axios';
-import { fixBigNumber, getPlaceholderData, msToTime, rawToBan } from '@helper/util';
+import cache from 'memory-cache';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import os from 'os';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<APIResponse>) {
-    if (!pullFromNode) {
-        return res.status(200).json(getPlaceholderData());
+    async function fetchWithCache(): Promise<RPCResponse> {
+        const value = cache.get('cachedData');
+        if (value) {
+            return value;
+        } else {
+            const telemetry = await getTelemetry();
+            const version = await getVersion();
+            const accountInfo = await getAccountInfo();
+            const totalMem = os.totalmem();
+            const systemInfo = {
+                systemLoad: os.loadavg()[0],
+                totalMem: totalMem,
+                usedMem: totalMem - os.freemem(),
+            };
+
+            cache.put(
+                'cachedData',
+                { telemetry, version, accountInfo, systemInfo },
+                refreshInterval - refreshInterval * 0.1
+            );
+            return { telemetry, version, accountInfo, systemInfo };
+        }
     }
 
-    const telemetry = await getTelemetry();
-    const version = await getVersion();
-    const accountInfo = await getAccountInfo();
+    const cachedData = await fetchWithCache();
 
-    const blockStats = [
-        { name: 'Current Blocks', value: fixBigNumber(telemetry.block_count) },
-        { name: 'Cemented Blocks', value: fixBigNumber(telemetry.cemented_count) },
-        { name: 'Unchecked Blocks', value: fixBigNumber(telemetry.unchecked_count) },
-        {
-            name: 'Sync Status',
-            value: `${Math.round((parseInt(telemetry.cemented_count) / parseInt(telemetry.block_count)) * 100)}%`,
-        },
-    ];
+    const data = {
+        nodeAccount: representativeAccount,
+        version: cachedData.version.node_vendor,
+        store_version: parseInt(cachedData.version.store_version),
+        protocol_version: parseInt(cachedData.version.protocol_version),
+        store_vendor: cachedData.version.store_vendor,
+        currentBlock: parseInt(cachedData.telemetry.block_count),
+        uncheckedBlocks: parseInt(cachedData.telemetry.unchecked_count),
+        cementedBlocks: parseInt(cachedData.telemetry.cemented_count),
+        numPeers: parseInt(cachedData.telemetry.peer_count),
+        accBalanceRaw: parseInt(cachedData.accountInfo.balance),
+        accPendingRaw: parseInt(cachedData.accountInfo.pending),
+        repAccount: cachedData.accountInfo.representative,
+        votingWeightRaw: parseInt(cachedData.accountInfo.weight),
+        systemLoad: cachedData.systemInfo.systemLoad,
+        usedMem: cachedData.systemInfo.usedMem,
+        totalMem: cachedData.systemInfo.totalMem,
+        nodeName: hostname,
+        nodeUptime: parseInt(cachedData.telemetry.uptime),
+        nodeLocation: location,
+    };
 
-    const nodeStats = [
-        { name: 'Version', value: `${telemetry.major_version}.${telemetry.minor_version}` },
-        { name: 'Database', value: version.store_vendor },
-        { name: 'Node Uptime', value: msToTime(parseInt(telemetry.uptime)) },
-        { name: 'Peers', value: fixBigNumber(telemetry.peer_count) },
-    ];
-
-    const nodeAccountStats = [
-        {
-            name: 'Balance',
-            value: `${fixBigNumber(rawToBan(parseInt(accountInfo.balance)))} BAN`,
-        },
-        {
-            name: 'Pending',
-            value: `${fixBigNumber(rawToBan(parseInt(accountInfo.pending)))} BAN`,
-        },
-        { name: 'Representative', value: accountInfo.representative },
-        {
-            name: 'Voting Weight',
-            value: `${fixBigNumber(rawToBan(parseInt(accountInfo.weight)))} BAN`,
-        },
-    ];
-
-    const systemStats = [
-        { name: 'Host', value: hostname },
-        { name: 'Location', value: location },
-        { name: 'Load', value: `${fixBigNumber(os.loadavg()[0])}` },
-        {
-            name: 'Memory Used',
-            value: `${fixBigNumber(Math.round(os.freemem() / 1000000))} / ${fixBigNumber(
-                Math.round(os.totalmem() / 1000000)
-            )} MB`,
-        },
-    ];
-
-    return res.status(200).json({ blockStats, nodeStats, nodeAccountStats, systemStats });
+    return res.status(200).json(data);
 }

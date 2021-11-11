@@ -1,7 +1,12 @@
 import styles from '@styles/StatsCard.module.scss';
 import Link from 'next/link';
 
-export default function StatsCard({ header, items }: { header: string; items: Stat[] }) {
+interface Props {
+    header: string;
+    items: { name: string; value: string | number }[];
+}
+
+export default function StatsCard({ header, items }: Props) {
     return (
         <div>
             <h1 className={styles.header}>{header}</h1>
