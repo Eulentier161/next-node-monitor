@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+.wrapper {
+    display: flex;
+    margin-bottom: 2em;
+    justify-content: space-between;
+}
+
+.right {
+    display: flex;
+    & > * {
+        align-self: center;
+        color: $clr-icon;
+    }
+}

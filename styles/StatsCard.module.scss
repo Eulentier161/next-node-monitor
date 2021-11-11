@@ -1,0 +1,30 @@
+@import './variables.scss';
+
+.header {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.wrapper {
+    border: $border-width-outside solid $clr-border-outside;
+    background-color: $clr-cell-bg;
+    border-radius: $border-radius;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: $border-width-inside solid $clr-border-inside;
+    padding: 0.5em;
+    &:first-child {
+        border-top: 0;
+    }
+    & > * {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-basis: 50%;
+        &:nth-child(2) {
+            text-align: end;
+        }
+    }
+}
