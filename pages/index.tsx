@@ -58,9 +58,7 @@ export default function Home(props: APIResponse) {
         { name: 'Load', value: state.systemLoad },
         {
             name: 'Memory Used',
-            value: `${Math.round(state.usedMem / 1048576).toLocaleString()} / ${Math.round(
-                state.totalMem / 1048576
-            ).toLocaleString()} MB`,
+            value: `${Math.round(state.usedMem).toLocaleString()} / ${Math.round(state.totalMem).toLocaleString()} MB`,
         },
     ];
 
