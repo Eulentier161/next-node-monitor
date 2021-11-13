@@ -2,6 +2,7 @@ import Banner from '@components/Banner';
 import Header from '@components/Header';
 import NodeAccount from '@components/NodeAccount';
 import StatsCard from '@components/StatsCard';
+import Footer from '@components/Footer';
 import { banner, hostUrl, refreshInterval } from '@config';
 import { msToTime, rawToBan } from '@helper/util';
 import axios from 'axios';
@@ -73,6 +74,7 @@ export default function Home(props: APIResponse) {
                 <StatsCard header={'Node Account'} items={nodeAccountStats} />
                 <StatsCard header={'System'} items={systemStats} />
             </div>
+            <Footer />
         </>
     );
 }
