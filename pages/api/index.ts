@@ -1,9 +1,15 @@
 import { nodeLocation, nodeName, representativeAccount } from '@config';
 import fetchWithCache from '@helper/fetchWithCache';
+import initMiddleware from '@helper/initMiddleware';
 import { getBlockSync } from '@helper/util';
+import Cors from 'cors';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+const cors = initMiddleware(Cors({ methods: ['GET'] }));
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse<APIResponse>) {
+    await cors(req, res);
+
     const { version, telemetry, accountInfo, systemInfo, stats, telemetryAvg, confirmationInfo } =
         await fetchWithCache();
     const currentBlock = parseInt(telemetry.block_count);
