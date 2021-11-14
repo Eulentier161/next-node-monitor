@@ -45,10 +45,56 @@ interface AccountInfo {
     pending: string;
 }
 
+interface StatsCountersEntry {
+    time: string;
+    type: string;
+    detail: string;
+    dir: string;
+    value: string;
+}
+
+interface StatsCounters {
+    type: string;
+    created: string;
+    entries: StatsCountersEntry[];
+    stat_duration_seconds: string;
+}
+
+interface ConfirmationStats {
+    count: string;
+    average: string;
+}
+
+interface Confirmation {
+    hash: string;
+    duration: string;
+    time: string;
+    tally: string;
+    blocks: string;
+    voters: string;
+    request_count: string;
+}
+
+interface ConfirmationHistory {
+    confirmation_stats: ConfirmationStats;
+    confirmations: Confirmation[];
+}
+
 interface SystemInfo {
     systemLoad: number;
     totalMem: number;
     usedMem: number;
+}
+
+interface ConfirmationInfo {
+    count: number;
+    timeSpan: number;
+    average: number;
+    percentile50: number;
+    percentile75: number;
+    percentile90: number;
+    percentile95: number;
+    percentile99: number;
 }
 
 interface RPCResponse {
@@ -56,6 +102,9 @@ interface RPCResponse {
     version: Version;
     accountInfo: AccountInfo;
     systemInfo: SystemInfo;
+    stats: StatsCounters;
+    telemetryAvg: TelemetryAverage;
+    confirmationInfo: ConfirmationInfo;
 }
 
 interface APIResponse {
@@ -68,6 +117,7 @@ interface APIResponse {
     uncheckedBlocks: number;
     cementedBlocks: number;
     numPeers: number;
+    confirmationInfo: ConfirmationInfo;
     accBalanceRaw: number;
     accPendingRaw: number;
     repAccount: string;
@@ -78,4 +128,7 @@ interface APIResponse {
     nodeName: string;
     nodeUptime: number;
     nodeLocation: string;
+    stats: StatsCounters;
+    telemetryAvg: Telemetry;
+    blockSync: number;
 }

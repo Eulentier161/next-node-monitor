@@ -1,12 +1,8 @@
 import { nodeRpcPort, nodeTcpPort, nodeURL, representativeAccount } from '@config';
 import axios from 'axios';
 
-const rpc = axios.create({
-    baseURL: `${nodeURL}:${nodeRpcPort}`,
-});
-
 const rpcPost = async (data: any) => {
-    const response = await rpc.post('', data, {});
+    const response = await axios.post(`${nodeURL}:${nodeRpcPort}`, data, {});
     try {
         return response.data;
     } catch (error) {
@@ -15,28 +11,31 @@ const rpcPost = async (data: any) => {
 };
 
 export function getTelemetry(): Promise<Telemetry> {
-    const data = {
-        action: 'telemetry',
-        address: '127.0.0.1',
-        port: nodeTcpPort,
-    };
-    return rpcPost(data);
+    return rpcPost({ action: 'telemetry', address: '127.0.0.1', port: nodeTcpPort });
+}
+
+export function getTelemetryAvg(): Promise<Telemetry> {
+    return rpcPost({ action: 'telemetry' });
 }
 
 export function getVersion(): Promise<Version> {
-    const data = {
-        action: 'version',
-    };
-    return rpcPost(data);
+    return rpcPost({ action: 'version' });
 }
 
 export function getAccountInfo(): Promise<AccountInfo> {
-    const data = {
+    return rpcPost({
         action: 'account_info',
         account: representativeAccount,
         representative: true,
         weight: true,
         pending: true,
-    };
-    return rpcPost(data);
+    });
+}
+
+export function getStats(): Promise<StatsCounters> {
+    return rpcPost({ action: 'stats', type: 'counters' });
+}
+
+export function getConfirmationHistory(): Promise<ConfirmationHistory> {
+    return rpcPost({ action: 'confirmation_history' });
 }

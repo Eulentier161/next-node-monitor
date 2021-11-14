@@ -1,10 +1,10 @@
 import Banner from '@components/Banner';
+import Footer from '@components/Footer';
 import Header from '@components/Header';
 import NodeAccount from '@components/NodeAccount';
 import StatsCard from '@components/StatsCard';
-import Footer from '@components/Footer';
 import { banner, hostUrl, refreshInterval } from '@config';
-import { msToTime, rawToBan } from '@helper/util';
+import getDigestedApi from '@helper/getDigestedApi';
 import axios from 'axios';
 import { useState } from 'react';
 import useInterval from 'react-useinterval';
@@ -20,48 +20,7 @@ export default function Home(props: APIResponse) {
         refreshInterval
     );
 
-    const nodeStats = [
-        { name: 'Version', value: state.version },
-        { name: 'Database', value: state.store_vendor },
-        { name: 'Node Uptime', value: msToTime(state.nodeUptime) },
-        { name: 'Peers', value: state.numPeers },
-    ];
-
-    const blockStats = [
-        { name: 'Current Blocks', value: state.currentBlock.toLocaleString() },
-        { name: 'Cemented Blocks', value: state.cementedBlocks.toLocaleString() },
-        { name: 'Unchecked Blocks', value: state.uncheckedBlocks.toLocaleString() },
-        {
-            name: 'Sync Status',
-            value: `${Math.round(state.cementedBlocks / state.currentBlock) * 100}%`,
-        },
-    ];
-
-    const nodeAccountStats = [
-        {
-            name: 'Balance',
-            value: `${rawToBan(state.accBalanceRaw).toLocaleString()} BAN`,
-        },
-        {
-            name: 'Pending',
-            value: `${rawToBan(state.accPendingRaw).toLocaleString()} BAN`,
-        },
-        { name: 'Representative', value: state.repAccount },
-        {
-            name: 'Voting Weight',
-            value: `${rawToBan(state.votingWeightRaw).toLocaleString()} BAN`,
-        },
-    ];
-
-    const systemStats = [
-        { name: 'Host', value: state.nodeName },
-        { name: 'Location', value: state.nodeLocation },
-        { name: 'Load', value: state.systemLoad },
-        {
-            name: 'Memory Used',
-            value: `${Math.round(state.usedMem).toLocaleString()} / ${Math.round(state.totalMem).toLocaleString()} MB`,
-        },
-    ];
+    const { nodeStats, blockStats, nodeAccountStats, systemStats } = getDigestedApi(state);
 
     return (
         <>
