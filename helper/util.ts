@@ -50,7 +50,7 @@ export async function getConfirmationInfo(): Promise<ConfirmationInfo> {
     const durationTotal = confirmationsCompact.reduce((sum, confirmation) => sum + parseInt(confirmation.duration), 0);
     const count = confirmationsCompact.length;
     const average = count ? Math.round(durationTotal / count) : 0;
-    const time_span =
+    const timeSpan =
         parseInt(confirmationsCompact[confirmationsCompact.length - 1].time) - parseInt(confirmationsCompact[0].time);
     const percentile50 = getConfirmationDurationPercentile(50, confirmationsCompact);
     const percentile75 = getConfirmationDurationPercentile(75, confirmationsCompact);
@@ -58,5 +58,5 @@ export async function getConfirmationInfo(): Promise<ConfirmationInfo> {
     const percentile95 = getConfirmationDurationPercentile(95, confirmationsCompact);
     const percentile99 = getConfirmationDurationPercentile(99, confirmationsCompact);
 
-    return { count, time_span, average, percentile50, percentile75, percentile90, percentile95, percentile99 };
+    return { count, timeSpan, average, percentile50, percentile75, percentile90, percentile95, percentile99 };
 }

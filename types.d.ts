@@ -88,7 +88,7 @@ interface SystemInfo {
 
 interface ConfirmationInfo {
     count: number;
-    time_span: number;
+    timeSpan: number;
     average: number;
     percentile50: number;
     percentile75: number;
