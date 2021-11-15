@@ -32,7 +32,6 @@ export default function Home(props: APIResponse) {
                 <meta property='og:type' content='website' />
                 <meta property='og:url' content={hostUrl} />
                 <meta property='og:title' content='Bananode Monitor' />
-                <meta property='og:site_name' content='Bananode Monitor' />
                 <meta property='og:author' content={nodeName} />
                 <meta
                     property='og:description'
