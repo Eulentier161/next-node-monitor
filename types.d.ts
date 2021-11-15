@@ -108,27 +108,27 @@ interface RPCResponse {
 }
 
 interface APIResponse {
-    nodeAccount: string;
+    node_account: string;
     version: string;
     store_version: number;
     protocol_version: number;
     store_vendor: string;
-    currentBlock: number;
-    uncheckedBlocks: number;
-    cementedBlocks: number;
-    numPeers: number;
-    confirmationInfo: ConfirmationInfo;
-    accBalanceRaw: number;
-    accPendingRaw: number;
-    repAccount: string;
-    votingWeightRaw: number;
-    systemLoad: number;
-    usedMem: number;
-    totalMem: number;
-    nodeName: string;
-    nodeUptime: number;
-    nodeLocation: string;
+    current_block: number;
+    unchecked_blocks: number;
+    cemented_blocks: number;
+    num_peers: number;
+    confirmation_info: ConfirmationInfo;
+    acc_balance_raw: number;
+    acc_pending_raw: number;
+    rep_account: string;
+    voting_weight_raw: number;
+    system_load: number;
+    used_mem: number;
+    total_mem: number;
+    node_name: string;
+    node_uptime: number;
+    node_location: string;
     stats: StatsCounters;
-    telemetryAvg: Telemetry;
-    blockSync: number;
+    telemetry_avg: Telemetry;
+    block_sync: number;
 }
