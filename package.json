@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "prebuild": "python3 pre_build.py",
+        "prebuild": "node preBuild.js",
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
@@ -20,7 +20,8 @@
         "react-dom": "17.0.2",
         "react-icons": "^4.3.1",
         "react-useinterval": "^1.0.2",
-        "sass": "^1.43.4"
+        "sass": "^1.43.4",
+        "swr": "^1.0.1"
     },
     "devDependencies": {
         "@types/cors": "^2.8.12",

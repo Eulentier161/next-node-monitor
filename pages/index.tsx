@@ -3,31 +3,18 @@ import Footer from '@components/Footer';
 import Header from '@components/Header';
 import NodeAccount from '@components/NodeAccount';
 import StatsCard from '@components/StatsCard';
+import useSWR from 'swr';
 import { banner, hostUrl, nodeName, refreshInterval } from '@config';
 import getDigestedApi from '@helper/getDigestedApi';
 import axios from 'axios';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import useInterval from 'react-useinterval';
 
 export default function Home() {
-    const [state, setState] = useState<APIResponse>();
+    const { data } = useSWR<APIResponse>(`${hostUrl}/api`, (url: string) => axios.get(url).then((res) => res.data), {
+        refreshInterval: refreshInterval,
+    });
 
-    useEffect(() => {
-        axios.get<APIResponse>(`${hostUrl}/api`).then((response) => {
-            setState(response.data);
-        });
-    }, []);
-
-    useInterval(
-        () =>
-            axios.get<APIResponse>(`${hostUrl}/api`).then((response) => {
-                setState(response.data);
-            }),
-        refreshInterval
-    );
-
-    const { nodeStats, blockStats, nodeAccountStats, systemStats } = getDigestedApi(state);
+    const { nodeStats, blockStats, nodeAccountStats, systemStats } = getDigestedApi(data);
 
     return (
         <>
