@@ -1,0 +1,10 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    & > * {
+        align-self: center;
+    }
+    & > :first-child {
+        text-decoration: underline red;
+    }
+}
