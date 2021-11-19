@@ -1,34 +1,72 @@
-@import './variables.scss';
+html,
+html[data-theme='dark'] {
+    --clr-bg-full-page: hsl(0, 0%, 10%);
+    --clr-icon: hsl(0, 0%, 90%);
+
+    // text
+    --clr-text: hsl(0, 0%, 90%);
+    --clr-text-headings: hsl(0, 0%, 90%);
+    --clr-text-link: hsl(0, 0%, 90%);
+    --clr-text-link-hover: hsl(300, 76%, 72%);
+    --font-family: arial;
+
+    // cells
+    --clr-cell-bg: hsl(0, 0%, 9%);
+    --clr-border-outside: hsl(0, 0%, 75%);
+    --clr-border-inside: hsl(0, 0%, 90%);
+    --border-width-outside: 1px;
+    --border-width-inside: 1px;
+    --border-radius: 0.25em;
+}
+html[data-theme='light'] {
+    --clr-bg-full-page: hsl(0, 0%, 90%);
+    --clr-icon: hsl(0, 0%, 10%);
+
+    // text
+    --clr-text: hsl(0, 0%, 10%);
+    --clr-text-headings: hsl(0, 0%, 10%);
+    --clr-text-link: hsl(0, 0%, 10%);
+    --clr-text-link-hover: hsl(278, 100%, 25%);
+    --font-family: arial;
+
+    // cells
+    --clr-cell-bg: hsl(0, 0%, 91%);
+    --clr-border-outside: hsl(0, 0%, 25%);
+    --clr-border-inside: hsl(0, 0%, 10%);
+    --border-width-outside: 1px;
+    --border-width-inside: 1px;
+    --border-radius: 0.25em;
+}
 
 :root {
-    background-color: $clr-bg-full-page;
+    background-color: var(--clr-bg-full-page);
     padding: 0;
     margin: 0;
     padding-left: 10em;
     padding-right: 10em;
-    font-family: $font-family;
+    font-family: var(--font-family);
 }
 
 span {
-    color: $clr-text;
+    color: var(--clr-text);
 }
 
 a {
-    color: $clr-text-link;
+    color: var(--clr-text-link);
     text-decoration: none;
     cursor: pointer;
     &:hover {
-        color: $clr-text-link-hover;
+        color: var(--clr-text-link-hover);
     }
 }
 
 h1 {
-    color: $clr-text-headings;
+    color: var(--clr-text-headings);
     font-size: larger;
 }
 
 p {
-    color: $clr-text;
+    color: var(--clr-text);
 }
 
 .row {

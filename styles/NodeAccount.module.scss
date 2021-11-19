@@ -1,10 +1,8 @@
-@import './variables.scss';
-
 .wrapper {
     display: flex;
-    border: $border-width-outside solid $clr-border-outside;
-    border-radius: $border-radius;
-    background-color: $clr-cell-bg;
+    border: var(--border-width-outside) solid var(--clr-border-outside);
+    border-radius: var(--border-radius);
+    background-color: var(--clr-cell-bg);
     justify-content: space-between;
     padding: 0.5em;
     & > :nth-child(2) {

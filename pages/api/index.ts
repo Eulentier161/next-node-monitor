@@ -12,29 +12,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 
     const { version, telemetry, accountInfo, systemInfo, stats, telemetryAvg, confirmationInfo } =
         await fetchWithCache();
-    const currentBlock = parseInt(telemetry.block_count);
-    const blockSync = getBlockSync(currentBlock, parseInt(telemetryAvg.block_count));
+    const currentBlock = parseFloat(telemetry.block_count);
+    const blockSync = getBlockSync(currentBlock, parseFloat(telemetryAvg.block_count));
 
     const data = {
         node_account: representativeAccount,
         version: version.node_vendor,
-        store_version: parseInt(version.store_version),
-        protocol_version: parseInt(version.protocol_version),
+        store_version: parseFloat(version.store_version),
+        protocol_version: parseFloat(version.protocol_version),
         store_vendor: version.store_vendor,
         current_block: currentBlock,
-        unchecked_blocks: parseInt(telemetry.unchecked_count),
-        cemented_blocks: parseInt(telemetry.cemented_count),
-        num_peers: parseInt(telemetry.peer_count),
+        unchecked_blocks: parseFloat(telemetry.unchecked_count),
+        cemented_blocks: parseFloat(telemetry.cemented_count),
+        num_peers: parseFloat(telemetry.peer_count),
         confirmation_info: confirmationInfo,
-        acc_balance_raw: parseInt(accountInfo.balance),
-        acc_pending_raw: parseInt(accountInfo.pending),
+        acc_balance_raw: parseFloat(accountInfo.balance),
+        acc_pending_raw: parseFloat(accountInfo.pending),
         rep_account: accountInfo.representative,
-        voting_weight_raw: parseInt(accountInfo.weight),
+        voting_weight_raw: parseFloat(accountInfo.weight),
         system_load: systemInfo.systemLoad,
         used_mem: systemInfo.usedMem,
         total_mem: systemInfo.totalMem,
         node_name: nodeName,
-        node_uptime: parseInt(telemetry.uptime),
+        node_uptime: parseFloat(telemetry.uptime),
         node_location: nodeLocation,
         stats,
         telemetry_avg: telemetryAvg,

@@ -1,0 +1,9 @@
+.btn {
+    background: none;
+    border: none;
+    color: var(--clr-icon);
+    cursor: pointer;
+    :hover {
+        color: var(--clr-text-link-hover);
+    }
+}

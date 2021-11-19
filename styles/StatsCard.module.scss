@@ -1,20 +1,18 @@
-@import './variables.scss';
-
 .header {
     font-size: larger;
     font-weight: bold;
 }
 
 .wrapper {
-    border: $border-width-outside solid $clr-border-outside;
-    background-color: $clr-cell-bg;
-    border-radius: $border-radius;
+    border: var(--border-width-outside) solid var(--clr-border-outside);
+    background-color: var(--clr-cell-bg);
+    border-radius: var(--border-radius);
 }
 
 .stats {
     display: flex;
     justify-content: space-between;
-    border-top: $border-width-inside solid $clr-border-inside;
+    border-top: var(--border-width-inside) solid var(--clr-border-inside);
     padding: 0.5em;
     &:first-child {
         border-top: 0;

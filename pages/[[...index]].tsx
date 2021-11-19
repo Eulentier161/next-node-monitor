@@ -1,6 +1,4 @@
 import Banner from '@components/Banner';
-import Footer from '@components/Footer';
-import Header from '@components/Header';
 import NodeAccount from '@components/NodeAccount';
 import StatsCard from '@components/StatsCard';
 import { banner, hostUrl, nodeName } from '@config';
@@ -11,7 +9,7 @@ import { useEffect } from 'react';
 import useSWR from 'swr';
 
 export default function Home() {
-    const { data, error } = useSWR<APIResponse>(`${hostUrl}/api`);
+    const { data, error } = useSWR<APIResponse>(`/api`);
     const router = useRouter();
     useEffect(() => {
         if (error) {
@@ -33,7 +31,6 @@ export default function Home() {
                 <meta property='og:author' content={nodeName} />
                 <meta property='og:image' content={`${hostUrl}/monkey.svg`} />
             </Head>
-            <Header />
             {banner.enable ? <Banner /> : null}
             <NodeAccount />
             <div className='row'>
@@ -42,7 +39,6 @@ export default function Home() {
                 <StatsCard header={'Node Account'} items={nodeAccountStats} />
                 <StatsCard header={'System'} items={systemStats} />
             </div>
-            <Footer />
         </>
     );
 }

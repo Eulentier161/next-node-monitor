@@ -1,5 +1,3 @@
-@import './variables.scss';
-
 .wrapper {
     & > * {
         text-align: end;
@@ -18,5 +16,5 @@
     margin-top: 1em;
     border: 0;
     height: 1px;
-    background-image: radial-gradient(circle, $clr-icon 0%, $clr-bg-full-page 100%);
+    background-image: radial-gradient(circle, var(--clr-icon) 0%, var(--clr-bg-full-page) 100%);
 }
