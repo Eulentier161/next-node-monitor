@@ -19,20 +19,20 @@ html[data-theme='dark'] {
     --border-radius: 0.25em;
 }
 html[data-theme='light'] {
-    --clr-bg-full-page: hsl(0, 0%, 90%);
-    --clr-icon: hsl(0, 0%, 10%);
+    --clr-bg-full-page: hsl(0, 0%, 100%);
+    --clr-icon: hsl(0, 0%, 0%);
 
     // text
-    --clr-text: hsl(0, 0%, 10%);
-    --clr-text-headings: hsl(0, 0%, 10%);
-    --clr-text-link: hsl(0, 0%, 10%);
+    --clr-text: hsl(0, 0%, 0%);
+    --clr-text-headings: hsl(0, 0%, 0%);
+    --clr-text-link: hsl(0, 0%, 0%);
     --clr-text-link-hover: hsl(278, 100%, 25%);
     --font-family: arial;
 
     // cells
-    --clr-cell-bg: hsl(0, 0%, 91%);
+    --clr-cell-bg: hsl(0, 0%, 95%);
     --clr-border-outside: hsl(0, 0%, 25%);
-    --clr-border-inside: hsl(0, 0%, 10%);
+    --clr-border-inside: hsl(0, 0%, 0%);
     --border-width-outside: 1px;
     --border-width-inside: 1px;
     --border-radius: 0.25em;
