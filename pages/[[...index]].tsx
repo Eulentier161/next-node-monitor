@@ -1,7 +1,7 @@
 import Banner from '@components/Banner';
 import NodeAccount from '@components/NodeAccount';
 import StatsCard from '@components/StatsCard';
-import { banner, hostUrl, nodeName } from '@config';
+import { banner, hostUrl, nodeLocation, nodeName } from '@config';
 import getDigestedApi from '@helper/getDigestedApi';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -29,7 +29,8 @@ export default function Home() {
                 <meta property='og:url' content={hostUrl} />
                 <meta property='og:title' content='Bananode Monitor' />
                 <meta property='og:author' content={nodeName} />
-                <meta property='og:image' content={`${hostUrl}/monkey.svg`} />
+                <meta property='og:description' content={`Name: ${nodeName}\nLocation: ${nodeLocation}`} />
+                <meta property='og:image' content={`${hostUrl}/monkey.png`} />
             </Head>
             {banner.enable ? <Banner /> : null}
             <NodeAccount />

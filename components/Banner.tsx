@@ -1,7 +1,7 @@
 import { banner } from '@config';
+import monkey from '@public/monkey.svg';
 import styles from '@styles/Banner.module.scss';
 import Image from 'next/image';
-import monkey from '@public/monkey.svg';
 
 export default function Banner() {
     return (

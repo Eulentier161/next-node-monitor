@@ -1,7 +1,7 @@
 import { nodeLocation, nodeName, representativeAccount } from '@config';
 import { fetchNodeInfoWithCache, fetchSystemInfoWithCache } from '@helper/fetchWithCache';
 import initMiddleware from '@helper/initMiddleware';
-import { getBlockSync } from '@helper/util';
+import { getBlockSync, rawToBan } from '@helper/util';
 import Cors from 'cors';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const currentBlock = parseFloat(telemetry.block_count);
     const blockSync = getBlockSync(currentBlock, parseFloat(telemetryAvg.block_count));
 
-    const data = {
+    const data: APIResponse = {
         node_account: representativeAccount,
         version: version.node_vendor,
         store_version: parseFloat(version.store_version),
@@ -28,9 +28,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         num_peers: parseFloat(telemetry.peer_count),
         confirmation_info: confirmationInfo,
         acc_balance_raw: parseFloat(accountInfo.balance),
+        acc_balance: rawToBan(parseFloat(accountInfo.balance)),
         acc_pending_raw: parseFloat(accountInfo.pending),
+        acc_pending: rawToBan(parseFloat(accountInfo.pending)),
         rep_account: accountInfo.representative,
         voting_weight_raw: parseFloat(accountInfo.weight),
+        voting_weight: rawToBan(parseFloat(accountInfo.weight)),
         system_load: cpu_data.load_average_1min,
         used_mem: mem_data.used_mb,
         total_mem: mem_data.total_mb,

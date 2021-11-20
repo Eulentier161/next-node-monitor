@@ -150,9 +150,12 @@ interface APIResponse {
     num_peers: number;
     confirmation_info: ConfirmationInfo;
     acc_balance_raw: number;
+    acc_balance: number;
     acc_pending_raw: number;
+    acc_pending: number;
     rep_account: string;
     voting_weight_raw: number;
+    voting_weight: number;
     system_load: number;
     used_mem: number;
     total_mem: number;

@@ -1,7 +1,7 @@
 import { getConfirmationHistory } from '@helper/axios';
 
 export function rawToBan(raw: number): number {
-    return (Math.round(raw / 100000000000000000000000000000) * 100) / 100;
+    return Math.round((raw / 100000000000000000000000000000) * 100) / 100;
 }
 
 export function sToTime(s: number): string {
@@ -34,7 +34,7 @@ function getConfirmationDurationPercentile(percentile: number, array: Confirmati
     }
     const index = (percentile / 100) * array.length;
     if (Math.floor(index) == index) {
-        return Math.round(parseInt(array[index - 1].duration) + parseInt(array[index].duration) / 2);
+        return Math.round(parseInt(array[0].duration) + parseInt(array[index].duration) / 2);
     } else {
         return Math.round(parseInt(array[Math.floor(index)].duration));
     }
@@ -42,21 +42,23 @@ function getConfirmationDurationPercentile(percentile: number, array: Confirmati
 
 export async function getConfirmationInfo(): Promise<ConfirmationInfo> {
     const confirmationHistory = await getConfirmationHistory();
-    const confirmationsCompact = confirmationHistory.confirmations.filter(
-        (confirmation) =>
-            parseInt(confirmation.time) >=
-            parseInt(confirmationHistory.confirmations[confirmationHistory.confirmations.length - 1].time) - 600000
+    const confirmations = confirmationHistory.confirmations.sort((a, b) => parseFloat(b.time) - parseFloat(a.time));
+    const confirmationsCompact = confirmations.filter(
+        (confirmation) => parseInt(confirmation.time) >= parseInt(confirmations[0].time) - 600000
     );
     const durationTotal = confirmationsCompact.reduce((sum, confirmation) => sum + parseInt(confirmation.duration), 0);
     const count = confirmationsCompact.length;
-    const average = count ? Math.round(durationTotal / count) : 0;
-    const timeSpan =
-        parseInt(confirmationsCompact[confirmationsCompact.length - 1].time) - parseInt(confirmationsCompact[0].time);
-    const percentile50 = getConfirmationDurationPercentile(50, confirmationsCompact);
-    const percentile75 = getConfirmationDurationPercentile(75, confirmationsCompact);
-    const percentile90 = getConfirmationDurationPercentile(90, confirmationsCompact);
-    const percentile95 = getConfirmationDurationPercentile(95, confirmationsCompact);
-    const percentile99 = getConfirmationDurationPercentile(99, confirmationsCompact);
 
-    return { count, timeSpan, average, percentile50, percentile75, percentile90, percentile95, percentile99 };
+    return {
+        count,
+        timeSpan:
+            parseInt(confirmationsCompact[0].time) -
+            parseInt(confirmationsCompact[confirmationsCompact.length - 1].time),
+        average: count ? Math.round(durationTotal / count) : 0,
+        percentile50: getConfirmationDurationPercentile(50, confirmationsCompact),
+        percentile75: getConfirmationDurationPercentile(75, confirmationsCompact),
+        percentile90: getConfirmationDurationPercentile(90, confirmationsCompact),
+        percentile95: getConfirmationDurationPercentile(95, confirmationsCompact),
+        percentile99: getConfirmationDurationPercentile(99, confirmationsCompact),
+    };
 }

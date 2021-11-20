@@ -1,7 +1,7 @@
+import Footer from '@components/Footer';
+import Header from '@components/Header';
 import { refreshInterval } from '@config';
 import '@styles/globals.scss';
-import Header from '@components/Header';
-import Footer from '@components/Footer';
 import axios from 'axios';
 import type { AppProps } from 'next/app';
 import { SWRConfig } from 'swr';
