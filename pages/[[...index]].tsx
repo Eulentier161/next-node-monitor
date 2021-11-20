@@ -25,12 +25,20 @@ export default function Home() {
                 <title>Bananode Monitor</title>
                 <meta charSet='UTF-8' />
                 <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-                <meta property='og:type' content='website' />
+                <meta name='description' content={`Name: ${nodeName},\nLocation: ${nodeLocation}`} />
+                <meta itemProp='name' content='Bananode Monitor' />
+                <meta itemProp='description' content={`Name: ${nodeName},\nLocation: ${nodeLocation}`} />
+                <meta itemProp='image' content={`${hostUrl}/monkey.png`} />
                 <meta property='og:url' content={hostUrl} />
+                <meta property='og:type' content='website' />
                 <meta property='og:title' content='Bananode Monitor' />
-                <meta property='og:author' content={nodeName} />
-                <meta property='og:description' content={`Name: ${nodeName}\nLocation: ${nodeLocation}`} />
+                <meta property='og:author' content='Eulentier' />
+                <meta property='og:description' content={`Name: ${nodeName},\nLocation: ${nodeLocation}`} />
                 <meta property='og:image' content={`${hostUrl}/monkey.png`} />
+                <meta name='twitter:card' content='summary_large_image' />
+                <meta name='twitter:title' content='Bananode Monitor' />
+                <meta name='twitter:description' content={`Name: ${nodeName},\nLocation: ${nodeLocation}`} />
+                <meta name='twitter:image' content={`${hostUrl}/monkey.png`} />
             </Head>
             {banner.enable ? <Banner /> : null}
             <NodeAccount />
