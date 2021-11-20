@@ -1,5 +1,5 @@
 import { nodeLocation, nodeName, representativeAccount } from '@config';
-import fetchWithCache from '@helper/fetchWithCache';
+import { fetchNodeInfoWithCache, fetchSystemInfoWithCache } from '@helper/fetchWithCache';
 import initMiddleware from '@helper/initMiddleware';
 import { getBlockSync } from '@helper/util';
 import Cors from 'cors';
@@ -10,8 +10,9 @@ const cors = initMiddleware(Cors({ methods: ['GET'] }));
 export default async function handler(req: NextApiRequest, res: NextApiResponse<APIResponse>) {
     await cors(req, res);
 
-    const { version, telemetry, accountInfo, systemInfo, stats, telemetryAvg, confirmationInfo } =
-        await fetchWithCache();
+    const { version, telemetry, accountInfo, stats, telemetryAvg, confirmationInfo } = await fetchNodeInfoWithCache();
+    const { cpu_data, mem_data } = await fetchSystemInfoWithCache();
+
     const currentBlock = parseFloat(telemetry.block_count);
     const blockSync = getBlockSync(currentBlock, parseFloat(telemetryAvg.block_count));
 
@@ -30,9 +31,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         acc_pending_raw: parseFloat(accountInfo.pending),
         rep_account: accountInfo.representative,
         voting_weight_raw: parseFloat(accountInfo.weight),
-        system_load: systemInfo.systemLoad,
-        used_mem: systemInfo.usedMem,
-        total_mem: systemInfo.totalMem,
+        system_load: cpu_data.load_average_1min,
+        used_mem: mem_data.used_mb,
+        total_mem: mem_data.total_mb,
         node_name: nodeName,
         node_uptime: parseFloat(telemetry.uptime),
         node_location: nodeLocation,

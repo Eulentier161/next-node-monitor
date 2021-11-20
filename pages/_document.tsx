@@ -7,17 +7,8 @@ class MyDocument extends Document {
     }
 
     render() {
-        const setInitialTheme = `
-          function getUserPreference() {
-            if(window.localStorage.getItem('theme')) {
-                return window.localStorage.getItem('theme')
-            }
-            return window.matchMedia('(prefers-color-scheme: dark)').matches
-                ? 'dark'
-                : 'light'
-          }
-          document.getElementsByTagName('html')[0].setAttribute('data-theme', getUserPreference());
-        `;
+        // function to get the prefered color scheme of the user on first page load
+        const setInitialTheme = `function getUserPreference(){if(window.localStorage.getItem('theme')){return window.localStorage.getItem('theme')}return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.getElementsByTagName('html')[0].setAttribute('data-theme',getUserPreference())`;
         return (
             <Html>
                 <Head />

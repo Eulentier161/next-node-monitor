@@ -16,7 +16,9 @@ export default function StatsCard({ header, items }: Props) {
                         <span>{name}</span>
                         {name === 'Representative' && value !== 'loading...' && value ? (
                             <Link href={`https://yellowspyglass.com/account/${value}`} passHref>
-                                <a>{value}</a>
+                                <a target='_blank' rel='noopener noreferrer'>
+                                    {value}
+                                </a>
                             </Link>
                         ) : (
                             <span>{value}</span>

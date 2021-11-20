@@ -80,12 +80,6 @@ interface ConfirmationHistory {
     confirmations: Confirmation[];
 }
 
-interface SystemInfo {
-    systemLoad: number;
-    totalMem: number;
-    usedMem: number;
-}
-
 interface ConfirmationInfo {
     count: number;
     timeSpan: number;
@@ -101,10 +95,47 @@ interface RPCResponse {
     telemetry: Telemetry;
     version: Version;
     accountInfo: AccountInfo;
-    systemInfo: SystemInfo;
     stats: StatsCounters;
     telemetryAvg: TelemetryAverage;
     confirmationInfo: ConfirmationInfo;
+}
+
+interface CpuData {
+    count: number;
+    model: string;
+    load_average_1min: number;
+    load_average_5min: number;
+    load_average_15min: number;
+}
+
+interface DriveData {
+    total_gb: number;
+    used_gb: number;
+    used_percentage: number;
+    free_gb: number;
+    free_percentage: number;
+}
+
+interface MemData {
+    total_mb: number;
+    used_mb: number;
+    used_percentage: number;
+    free_mb: number;
+    free_percentage: number;
+}
+
+interface OsData {
+    uptime: number;
+    platform: string;
+    os: string;
+    arch: string;
+}
+
+interface SystemInfo {
+    cpu_data: CpuData;
+    drive_data: DriveData;
+    mem_data: MemData;
+    os_data: OsData;
 }
 
 interface APIResponse {

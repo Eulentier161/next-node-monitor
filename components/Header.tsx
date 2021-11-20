@@ -15,7 +15,7 @@ export default function Header() {
                     <ThemeToggle />
                 </a>
                 <Link href='https://github.com/Eulentier161/next-node-monitor' passHref>
-                    <a>
+                    <a target='_blank' rel='noopener noreferrer'>
                         <GoMarkGithub size='2em' />
                     </a>
                 </Link>

@@ -19,7 +19,9 @@ export default function NodeAccount() {
             <div className={styles.wrapper}>
                 <span>Address</span>
                 <Link href={`https://yellowspyglass.com/account/${representativeAccount}`} passHref>
-                    <a>{representativeAccount}</a>
+                    <a target='_blank' rel='noopener noreferrer'>
+                        {representativeAccount}
+                    </a>
                 </Link>
                 <a onClick={() => handleCopyToClipboard()}>{clipboardIcon}</a>
             </div>

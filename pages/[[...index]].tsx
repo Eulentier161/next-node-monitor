@@ -13,7 +13,7 @@ export default function Home() {
     const router = useRouter();
     useEffect(() => {
         if (error) {
-            router.replace('/500');
+            router.push('/500');
         }
     }, [error]);
 
