@@ -96,7 +96,7 @@ interface RPCResponse {
     version: Version;
     accountInfo: AccountInfo;
     stats: StatsCounters;
-    telemetryAvg: TelemetryAverage;
+    telemetryAvg: Telemetry;
     confirmationInfo: ConfirmationInfo;
 }
 

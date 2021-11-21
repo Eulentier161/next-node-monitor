@@ -3,13 +3,16 @@ import NodeAccount from '@components/NodeAccount';
 import StatsCard from '@components/StatsCard';
 import { banner, hostUrl, nodeLocation, nodeName } from '@config';
 import getDigestedApi from '@helper/getDigestedApi';
+import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import useSWR from 'swr';
 
 export default function Home() {
-    const { data, error } = useSWR<APIResponse>(`/api`);
+    const { data, error } = useSWR<APIResponse, Error>(`/api`, (url: string) =>
+        axios.get<APIResponse>(url).then((res) => res.data)
+    );
     const router = useRouter();
     useEffect(() => {
         if (error) {

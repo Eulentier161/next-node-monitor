@@ -1,17 +1,17 @@
 import { nodeRpcPort, nodeTcpPort, nodeURL, representativeAccount } from '@config';
 import axios from 'axios';
 
-const rpcPost = async (data: any) => {
-    const response = await axios.post(`${nodeURL}:${nodeRpcPort}`, data, {});
-    try {
-        return response.data;
-    } catch (error) {
-        return error;
-    }
-};
+async function rpcPost<T>(data: any): Promise<T> {
+    const response = await axios.post<T>(`${nodeURL}:${nodeRpcPort}`, data, {});
+    return response.data;
+}
 
 export function getTelemetry(): Promise<Telemetry> {
-    return rpcPost({ action: 'telemetry', address: '127.0.0.1', port: nodeTcpPort });
+    return rpcPost({
+        action: 'telemetry',
+        address: '127.0.0.1',
+        port: nodeTcpPort,
+    });
 }
 
 export function getTelemetryAvg(): Promise<Telemetry> {

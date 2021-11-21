@@ -1,8 +1,8 @@
 export const representativeAccount = 'ban_1hootubxy68fhhrctjmaias148tz91tsse3pq1pgmfedsm3cubhobuihqnxd';
 export const nodeName = 'Eulentier';
 export const nodeLocation = 'The Jungle';
-export const hostUrl = 'https://eulentier.de'; // enter the actual domain here -> "https://example.com" or "http://localhost:3000"
-export const nodeURL = 'http://localhost'; // url to reach your node. most likely "http://localhost"
+export const hostUrl = 'http://localhost:3000'; // enter the actual domain here -> "https://example.com" or "http://localhost:3000"
+export const nodeURL = 'http://172.27.224.112'; // url to reach your node. most likely "http://localhost"
 export const nodeTcpPort = '7071';
 export const nodeRpcPort = '7072';
 export const refreshInterval = 5000;

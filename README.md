@@ -9,8 +9,12 @@ This monitor is build with [Banano](https://banano.cc/) instead of [Nano](https:
 -   edit `config.ts`
 -   if you want to change the themes, edit the theme variables on top of `styles/globals.scss` or try to decipher my awful scss code in `styles/*`
 -   run `npm run dev` to start a debugging server
+
 ## run with nodejs server
+
 -   run `npm run build && npm run start` to create an optimized production build and run it
+
 ## run inside docker
+
 -   run `docker build . -t next-node-monitor && docker run next-node-monitor`\
-the docker setup could need some proper config to make this less annoying for people who want to use it. if you know stuff about docker feel free to help me out.
+    the docker setup could need some proper config to make this less annoying for people who want to use it. if you know stuff about docker feel free to help me out.

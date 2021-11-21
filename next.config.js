@@ -4,4 +4,7 @@ module.exports = {
     images: {
         domains: ['monkey.banano.cc'],
     },
+    eslint: {
+        dirs: ['pages', 'components', 'tests'],
+    },
 };

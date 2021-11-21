@@ -1,5 +1,4 @@
 import { banner } from '@config';
-import monkey from '@public/monkey.svg';
 import styles from '@styles/Banner.module.scss';
 import Image from 'next/image';
 
@@ -11,7 +10,7 @@ export default function Banner() {
                 <p>{banner.paragraph}</p>
             </div>
             <div className={styles.imageContainer}>
-                <Image src={monkey} alt='Banano MonKey' width='150em' height='150em' />
+                <Image src='/monkey.svg' alt='Banano MonKey' width='150em' height='150em' />
             </div>
         </div>
     );
