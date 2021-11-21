@@ -1,3 +1,10 @@
+<p align="center">
+    <a href="https://threema.id/NTFCTHPY">
+        <img src="https://img.shields.io/badge/Threema-NTFCTHPY-green" alt="Threema" />
+    </a>
+</p>
+<hr />
+
 This is a replica of [nanoNodeMonitor](https://github.com/NanoTools/nanoNodeMonitor) written in [TypeScript](https://github.com/microsoft/TypeScript) and [Next.js](https://github.com/vercel/next.js).\
 Instead of [creeper.banano.cc](https://creeper.banano.cc) it redirects to [yellowspyglass.com](https://yellowspyglass.com).\
 This monitor is build with [Banano](https://banano.cc/) instead of [Nano](https://nano.org/) in mind.
