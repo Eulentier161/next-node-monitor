@@ -2,6 +2,9 @@
     <a href="https://threema.id/NTFCTHPY">
         <img src="https://img.shields.io/badge/Threema-NTFCTHPY-green" alt="Threema" />
     </a>
+    <img alt="GitHub" src="https://img.shields.io/github/license/Eulentier161/next-node-monitor">
+    <img alt="Snyk Vulnerabilities for GitHub Repo" src="https://img.shields.io/snyk/vulnerabilities/github/Eulentier161/next-node-monitor">
+    <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Eulentier161/next-node-monitor">
 </p>
 <hr />
 
