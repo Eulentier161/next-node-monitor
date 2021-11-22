@@ -1,10 +1,14 @@
 <p align="center">
     <a href="https://threema.id/NTFCTHPY">
-        <img src="https://img.shields.io/badge/Threema-NTFCTHPY-green" alt="Threema" />
+        <img src="https://img.shields.io/badge/Threema-NTFCTHPY-green" />
     </a>
-    <img alt="GitHub" src="https://img.shields.io/github/license/Eulentier161/next-node-monitor">
-    <img alt="Snyk Vulnerabilities for GitHub Repo" src="https://img.shields.io/snyk/vulnerabilities/github/Eulentier161/next-node-monitor">
-    <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Eulentier161/next-node-monitor">
+    <a href="https://github.com/Eulentier161/next-node-monitor/blob/main/LICENSE">
+        <img src="https://img.shields.io/github/license/Eulentier161/next-node-monitor" />
+    </a>
+    <img src="https://img.shields.io/github/languages/code-size/Eulentier161/next-node-monitor" />
+    <a href="https://github.com/Eulentier161/next-node-monitor/actions/workflows/node.js.yml">
+        <img src="https://github.com/Eulentier161/next-node-monitor/actions/workflows/node.js.yml/badge.svg">
+    </a>
 </p>
 <hr />
 

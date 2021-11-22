@@ -1,25 +1,19 @@
-import { Banner, NodeAccount, StatsCard } from '@components';
+import { Banner, Error, NodeAccount, StatsCard } from '@components';
 import { banner, hostUrl, nodeLocation, nodeName } from '@config';
 import getDigestedApi from '@helper/getDigestedApi';
 import axios from 'axios';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import useSWR from 'swr';
 
 export default function Home() {
     const { data, error } = useSWR<APIResponse, Error>(`/api`, (url: string) =>
         axios.get<APIResponse>(url).then((res) => res.data)
     );
-    const router = useRouter();
-    useEffect(() => {
-        if (error) {
-            router.push('/500');
-        }
-    }, [error]);
-
     const { nodeStats, blockStats, nodeAccountStats, systemStats } = getDigestedApi(data);
 
+    if (error) {
+        return <Error />;
+    }
     return (
         <>
             <Head>
