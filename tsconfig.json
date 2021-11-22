@@ -16,8 +16,7 @@
         "incremental": true,
         "baseUrl": "./",
         "paths": {
-            "@styles/*": ["styles/*"],
-            "@components/*": ["components/*"],
+            "@components": ["components"],
             "@config": ["config.ts"],
             "@helper/*": ["helper/*"],
             "@public/*": ["public/*"]

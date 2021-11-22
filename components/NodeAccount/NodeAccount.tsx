@@ -1,5 +1,5 @@
 import { representativeAccount } from '@config';
-import styles from '@styles/NodeAccount.module.scss';
+import styles from './NodeAccount.module.scss';
 import Link from 'next/link';
 import { useState } from 'react';
 import { GoCheck, GoClippy } from 'react-icons/go';

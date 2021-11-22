@@ -1,4 +1,4 @@
-import Error from '@components/Error';
+import { Error } from '@components';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';

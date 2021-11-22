@@ -1,5 +1,5 @@
 import { banner } from '@config';
-import styles from '@styles/Banner.module.scss';
+import styles from './Banner.module.scss';
 import Image from 'next/image';
 
 export default function Banner() {

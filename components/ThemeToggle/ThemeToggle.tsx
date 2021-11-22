@@ -1,4 +1,4 @@
-import styles from '@styles/ThemeToggle.module.scss';
+import styles from './ThemeToggle.module.scss';
 import { useEffect, useState } from 'react';
 import { BsFillMoonStarsFill, BsSunFill } from 'react-icons/bs';
 

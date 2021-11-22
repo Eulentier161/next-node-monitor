@@ -1,6 +1,4 @@
-import Banner from '@components/Banner';
-import NodeAccount from '@components/NodeAccount';
-import StatsCard from '@components/StatsCard';
+import { Banner, NodeAccount, StatsCard } from '@components';
 import { banner, hostUrl, nodeLocation, nodeName } from '@config';
 import getDigestedApi from '@helper/getDigestedApi';
 import axios from 'axios';
