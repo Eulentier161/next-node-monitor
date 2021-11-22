@@ -32,6 +32,7 @@ export function getConfirmationDurationPercentile(percentile: number, array: Con
     if (!array.length) {
         return 0;
     }
+    array = array.sort((a, b) => parseFloat(a.duration) - parseFloat(b.duration));
     const index = (percentile / 100) * array.length;
     return Math.floor(parseInt(array[Math.floor(index)].duration));
 }

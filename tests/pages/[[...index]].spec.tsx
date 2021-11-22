@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import Home from '../../pages/[[...index]]';
 
-it('desc', () => {
+it('Index page renders static html', () => {
     render(<Home />);
     screen.getAllByText('Node Account').forEach((element) => expect(element).toBeInTheDocument());
     expect(screen.getByText('Node')).toBeInTheDocument();
