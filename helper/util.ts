@@ -28,16 +28,12 @@ export function getBlockSync(nodeBlockCount: number, averageBlockCount: number):
     return percent;
 }
 
-function getConfirmationDurationPercentile(percentile: number, array: Confirmation[]) {
+export function getConfirmationDurationPercentile(percentile: number, array: Confirmation[]) {
     if (!array.length) {
         return 0;
     }
     const index = (percentile / 100) * array.length;
-    if (Math.floor(index) == index) {
-        return Math.round(parseInt(array[0].duration) + parseInt(array[index].duration) / 2);
-    } else {
-        return Math.round(parseInt(array[Math.floor(index)].duration));
-    }
+    return Math.floor(parseInt(array[Math.floor(index)].duration));
 }
 
 export async function getConfirmationInfo(): Promise<ConfirmationInfo> {
