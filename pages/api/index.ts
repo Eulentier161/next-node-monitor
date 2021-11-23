@@ -1,4 +1,3 @@
-import { nodeLocation, nodeName, representativeAccount } from '@config';
 import { fetchNodeInfoWithCache, fetchSystemInfoWithCache } from '@helper/fetchWithCache';
 import initMiddleware from '@helper/initMiddleware';
 import { getBlockSync, rawToBan } from '@helper/util';
@@ -6,6 +5,9 @@ import Cors from 'cors';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const cors = initMiddleware(Cors({ methods: ['GET'] }));
+const nodeLocation = process.env.nodeLocation;
+const nodeName = process.env.nodeName;
+const representativeAccount = process.env.representativeAccount;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<APIResponse>) {
     await cors(req, res);

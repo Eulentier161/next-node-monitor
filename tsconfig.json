@@ -17,7 +17,6 @@
         "baseUrl": "./",
         "paths": {
             "@components": ["components"],
-            "@config": ["config.ts"],
             "@helper/*": ["helper/*"],
             "@public/*": ["public/*"]
         }

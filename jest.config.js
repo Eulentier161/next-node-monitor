@@ -12,7 +12,6 @@ module.exports = {
         '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
         '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$': '<rootDir>/__mocks__/fileMock.js',
         '@components': '<rootDir>/components/',
-        '@config': '<rootDir>/config.ts',
         '@helper/(.*)': '<rootDir>/helper/$1',
         '@public/(.*)': '<rootDir>/public/$1',
     },

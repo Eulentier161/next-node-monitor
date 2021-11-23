@@ -1,13 +1,8 @@
+require('dotenv').config();
 const fs = require('fs');
 const axios = require('axios');
 
-// janky way of getting the rep address from `config.ts`
-const repAddr = fs
-    .readFileSync('./config.ts')
-    .toString()
-    .split('\n')
-    .find((line) => line.includes('export const representativeAccount'))
-    .split("'")[1];
+const repAddr = process.env.representativeAccount;
 
 // get the monkey.svg for the representative account
 axios(`https://monkey.banano.cc/api/v1/monkey/${repAddr}`).then((res) => {

@@ -1,9 +1,12 @@
 import { Banner, Error, NodeAccount, StatsCard } from '@components';
-import { banner, hostUrl, nodeLocation, nodeName } from '@config';
 import getDigestedApi from '@helper/getDigestedApi';
 import axios from 'axios';
 import Head from 'next/head';
 import useSWR from 'swr';
+
+const hostUrl = process.env.hostUrl;
+const nodeLocation = process.env.nodeLocation;
+const nodeName = process.env.nodeName;
 
 export default function Home() {
     const { data, error } = useSWR<APIResponse, Error>(`/api`, (url: string) =>
@@ -35,7 +38,7 @@ export default function Home() {
                 <meta name='twitter:description' content={`Name: ${nodeName},\nLocation: ${nodeLocation}`} />
                 <meta name='twitter:image' content={`${hostUrl}/monkey.png`} />
             </Head>
-            {banner.enable ? <Banner /> : null}
+            <Banner />
             <NodeAccount />
             <div className='row'>
                 <StatsCard header={'Node'} items={nodeStats} />
