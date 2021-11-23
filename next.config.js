@@ -5,6 +5,6 @@ module.exports = {
         domains: ['monkey.banano.cc'],
     },
     eslint: {
-        dirs: ['pages', 'components', 'tests'],
+        dirs: ['pages', 'components', 'helper', 'tests'],
     },
 };

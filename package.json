@@ -20,6 +20,7 @@
         "@testing-library/react": "^12.1.2",
         "@testing-library/user-event": "^13.5.0",
         "@types/jest": "^27.0.3",
+        "@types/node-os-utils": "file:types/node-os-utils",
         "@typescript-eslint/eslint-plugin": "^5.4.0",
         "axios": "^0.24.0",
         "babel-plugin-dynamic-import-node": "^2.3.3",
@@ -42,7 +43,6 @@
     "devDependencies": {
         "@types/cors": "^2.8.12",
         "@types/memory-cache": "^0.2.1",
-        "@types/node-os-utils": "^1.2.0",
         "@types/react": "17.0.34",
         "eslint": "7.32.0",
         "eslint-config-next": "12.0.3",

@@ -28,29 +28,43 @@ export function getBlockSync(nodeBlockCount: number, averageBlockCount: number):
     return percent;
 }
 
-export function getConfirmationDurationPercentile(percentile: number, array: Confirmation[]) {
-    if (!array.length) {
+export function getConfirmationDurationPercentile(percentile: number, confirmations: Confirmation[]) {
+    if (!confirmations.length) {
         return 0;
     }
-    array = array.sort((a, b) => parseFloat(a.duration) - parseFloat(b.duration));
-    const index = (percentile / 100) * array.length;
-    return Math.floor(parseInt(array[Math.floor(index)].duration));
+    confirmations = confirmations.sort((a, b) => parseFloat(a.duration) - parseFloat(b.duration));
+    const index = Math.floor((percentile / 100) * confirmations.length);
+    return Math.floor(parseFloat(confirmations[index].duration));
 }
 
 export async function getConfirmationInfo(): Promise<ConfirmationInfo> {
     const confirmationHistory = await getConfirmationHistory();
+    if (!parseFloat(confirmationHistory.confirmation_stats.count)) {
+        return {
+            count: 0,
+            time_span: 0,
+            average: 0,
+            percentile50: 0,
+            percentile75: 0,
+            percentile90: 0,
+            percentile95: 0,
+            percentile99: 0,
+        };
+    }
     const confirmations = confirmationHistory.confirmations.sort((a, b) => parseFloat(b.time) - parseFloat(a.time));
     const confirmationsCompact = confirmations.filter(
-        (confirmation) => parseInt(confirmation.time) >= parseInt(confirmations[0].time) - 600000
+        (confirmation) => parseFloat(confirmation.time) >= parseFloat(confirmations[0].time) - 600000
     );
-    const durationTotal = confirmationsCompact.reduce((sum, confirmation) => sum + parseInt(confirmation.duration), 0);
+    const durationTotal = confirmationsCompact.reduce(
+        (sum, confirmation) => sum + parseFloat(confirmation.duration),
+        0
+    );
     const count = confirmationsCompact.length;
-
     return {
         count,
-        timeSpan:
-            parseInt(confirmationsCompact[0].time) -
-            parseInt(confirmationsCompact[confirmationsCompact.length - 1].time),
+        time_span:
+            parseFloat(confirmationsCompact[0].time) -
+            parseFloat(confirmationsCompact[confirmationsCompact.length - 1].time),
         average: count ? Math.round(durationTotal / count) : 0,
         percentile50: getConfirmationDurationPercentile(50, confirmationsCompact),
         percentile75: getConfirmationDurationPercentile(75, confirmationsCompact),

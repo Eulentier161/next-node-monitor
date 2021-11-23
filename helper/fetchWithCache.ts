@@ -7,7 +7,7 @@ import { getConfirmationInfo } from './util';
 const refreshCacheInterval = refreshInterval - refreshInterval * 0.1;
 
 export async function fetchNodeInfoWithCache(): Promise<RPCResponse> {
-    const value: RPCResponse = cache.get('nodeInfo');
+    const value: RPCResponse = cache.get('nodeInfo'); // eslint-disable-line
     if (value) {
         return value;
     }
@@ -25,7 +25,7 @@ export async function fetchNodeInfoWithCache(): Promise<RPCResponse> {
 }
 
 export async function fetchSystemInfoWithCache(): Promise<SystemInfo> {
-    const value: SystemInfo = cache.get('systemInfo');
+    const value: SystemInfo = cache.get('systemInfo'); // eslint-disable-line
     if (value) {
         return value;
     }
@@ -40,15 +40,12 @@ export async function fetchSystemInfoWithCache(): Promise<SystemInfo> {
     };
 
     const driveInfo = await drive.info('/');
-    function fixDriveInfoType(x: string | number): number {
-        return typeof x === 'string' ? parseFloat(x) : x;
-    }
     const drive_data = {
-        total_gb: fixDriveInfoType(driveInfo.totalGb),
-        used_gb: fixDriveInfoType(driveInfo.usedGb),
-        used_percentage: fixDriveInfoType(driveInfo.usedPercentage),
-        free_gb: fixDriveInfoType(driveInfo.freeGb),
-        free_percentage: fixDriveInfoType(driveInfo.freePercentage),
+        total_gb: parseFloat(driveInfo.totalGb),
+        used_gb: parseFloat(driveInfo.usedGb),
+        used_percentage: parseFloat(driveInfo.usedPercentage),
+        free_gb: parseFloat(driveInfo.freeGb),
+        free_percentage: parseFloat(driveInfo.freePercentage),
     };
 
     const memInfo = await mem.info();
@@ -63,8 +60,7 @@ export async function fetchSystemInfoWithCache(): Promise<SystemInfo> {
     const os_data = {
         uptime: os.uptime(),
         platform: os.platform(),
-        // @ts-ignore
-        os: (await os.oos()) as string,
+        os: await os.oos(),
         arch: os.arch(),
     };
 

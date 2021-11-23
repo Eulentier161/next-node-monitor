@@ -1,0 +1,28 @@
+{
+    "name": "@types/node-os-utils",
+    "version": "1.2.0",
+    "description": "TypeScript definitions for node-os-utils",
+    "license": "MIT",
+    "contributors": [
+        "Nasreddine Bac Ali (https://github.com/bacali95)"
+    ],
+    "main": "index.js",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/node-os-utils"
+    },
+    "scripts": {},
+    "typesPublisherContentHash": "86d91cf83bb4a362da95374d4c40b67784d38c59cdb3214d7b4e68069d6f6669",
+    "typeScriptVersion": "2.8",
+    "bugs": {
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped/issues"
+    },
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped#readme",
+    "directories": {
+        "lib": "lib"
+    },
+    "keywords": [],
+    "author": ""
+}
