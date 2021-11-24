@@ -5,3 +5,4 @@ export { default as NodeAccount } from './NodeAccount';
 export { default as Header } from './Header';
 export { default as Error } from './Error';
 export { default as Banner } from './Banner';
+export { default as BlocksChart } from './BlocksChart';

@@ -8,7 +8,11 @@ export default function Header() {
     return (
         <div className={styles.wrapper}>
             <div>
-                <h1>Bananode Monitor</h1>
+                <Link href='/' passHref>
+                    <a>
+                        <h1>Bananode Monitor</h1>
+                    </a>
+                </Link>
             </div>
             <div className={styles.right}>
                 <a>

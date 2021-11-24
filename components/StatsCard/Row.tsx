@@ -7,13 +7,15 @@ interface Props {
 }
 
 export default function Row({ name, value }: Props) {
-    if (name === 'Representative' && value !== 'loading...' && typeof value === 'string') {
-        return (
-            <div className={styles.stats}>
-                <span>{name}</span>
-                <RepresentativeLink address={value} />
-            </div>
-        );
+    if (value !== 'loading...' && typeof value === 'string') {
+        if (name === 'Representative') {
+            return (
+                <div className={styles.stats}>
+                    <span>{name}</span>
+                    <RepresentativeLink address={value} />
+                </div>
+            );
+        }
     }
     return (
         <div className={styles.stats}>
