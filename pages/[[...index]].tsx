@@ -3,10 +3,7 @@ import getDigestedApi from '@helper/getDigestedApi';
 import axios from 'axios';
 import Head from 'next/head';
 import useSWR from 'swr';
-
-const hostUrl = process.env.hostUrl;
-const nodeLocation = process.env.nodeLocation;
-const nodeName = process.env.nodeName;
+import { nodeName, nodeLocation, hostUrl } from '../config.env';
 
 export default function Home() {
     const { data, error } = useSWR<APIResponse, Error>(`/api`, (url: string) =>

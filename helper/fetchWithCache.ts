@@ -2,8 +2,8 @@ import { getAccountInfo, getStats, getTelemetry, getTelemetryAvg, getVersion } f
 import cache from 'memory-cache';
 import { cpu, drive, mem, os } from 'node-os-utils';
 import { getConfirmationInfo } from './util';
+import { refreshInterval } from '../config.env';
 
-const refreshInterval = parseInt(process.env.refreshInterval);
 const refreshCacheInterval = refreshInterval - refreshInterval * 0.1;
 
 export async function fetchNodeInfoWithCache(): Promise<RPCResponse> {

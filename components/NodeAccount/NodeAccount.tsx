@@ -2,8 +2,7 @@ import styles from './NodeAccount.module.scss';
 import Link from 'next/link';
 import { useState } from 'react';
 import { GoCheck, GoClippy } from 'react-icons/go';
-
-const representativeAccount = process.env.representativeAccount;
+import { representativeAccount } from '../../config.env';
 
 export default function NodeAccount() {
     const [clipboardIcon, setClipboardIcon] = useState(<GoClippy size='1.5em' />);

@@ -2,8 +2,7 @@ import { Footer, Header } from '@components';
 import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
 import { SWRConfig } from 'swr';
-
-const refreshInterval = parseInt(process.env.refreshInterval);
+import { refreshInterval } from '../config.env';
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (

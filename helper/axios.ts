@@ -1,9 +1,5 @@
 import axios from 'axios';
-
-const nodeRpcPort = process.env.nodeRpcPort;
-const nodeTcpPort = process.env.nodeTcpPort;
-const nodeUrl = process.env.nodeUrl;
-const representativeAccount = process.env.representativeAccount;
+import { nodeUrl, nodeRpcPort, nodeTcpPort, representativeAccount } from '../config.env';
 
 async function rpcPost<T>(data: any): Promise<T> {
     const response = await axios.post<T>(`${nodeUrl}:${nodeRpcPort}`, data, {});

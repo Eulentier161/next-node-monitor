@@ -2,7 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const axios = require('axios');
 
-const repAddr = process.env.representativeAccount;
+const repAddr = process.env.NEXT_PUBLIC_representativeAccount;
 
 // get the monkey.svg for the representative account
 axios(`https://monkey.banano.cc/api/v1/monkey/${repAddr}`).then((res) => {

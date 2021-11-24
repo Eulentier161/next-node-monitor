@@ -1,8 +1,7 @@
 import styles from './Banner.module.scss';
 import Image from 'next/image';
+import { bannerHeading, bannerParagraph } from '../../config.env';
 
-const bannerHeading = process.env.bannerHeading;
-const bannerParagraph = process.env.bannerParagraph;
 export default function Banner() {
     return (
         <div className={styles.wrapper}>

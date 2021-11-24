@@ -1,0 +1,29 @@
+version: '3'
+services:
+    monitor:
+        image: 'eulentier/next-node-monitor'
+        restart: 'unless-stopped'
+        ports:
+            - '3000:3000'
+        volumes:
+            - '~:/moni'
+        networks:
+            - localvirt
+        env_file:
+            - .env
+    node:
+        image: 'bananocoin/banano'
+        container_name: node
+        restart: 'unless-stopped'
+        ports:
+            - '7071:7071'
+            - '7072:7072'
+            - '7074:7074'
+        volumes:
+            - '~:/nod'
+        networks:
+            - localvirt
+
+networks:
+    localvirt:
+        driver: bridge
