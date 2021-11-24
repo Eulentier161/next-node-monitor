@@ -2,9 +2,9 @@ import { getAccountInfo, getStats, getTelemetry, getTelemetryAvg, getVersion } f
 import cache from 'memory-cache';
 import { cpu, drive, mem, os } from 'node-os-utils';
 import { getConfirmationInfo } from './util';
-import { refreshInterval } from '../config.env';
 
-const refreshCacheInterval = refreshInterval - refreshInterval * 0.1;
+const refreshCacheInterval =
+    parseInt(process.env.NEXT_PUBLIC_refreshInterval) - parseInt(process.env.NEXT_PUBLIC_refreshInterval) * 0.1;
 
 export async function fetchNodeInfoWithCache(): Promise<RPCResponse> {
     const value: RPCResponse = cache.get('nodeInfo'); // eslint-disable-line

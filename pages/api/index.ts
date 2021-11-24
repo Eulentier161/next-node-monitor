@@ -3,7 +3,6 @@ import initMiddleware from '@helper/initMiddleware';
 import { getBlockSync, rawToBan } from '@helper/util';
 import Cors from 'cors';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { representativeAccount, nodeName, nodeLocation } from '../../config.env';
 
 const cors = initMiddleware(Cors({ methods: ['GET'] }));
 
@@ -17,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const blockSync = getBlockSync(currentBlock, parseFloat(telemetryAvg.block_count));
 
     const data: APIResponse = {
-        node_account: representativeAccount,
+        node_account: process.env.NEXT_PUBLIC_representativeAccount,
         version: version.node_vendor,
         store_version: parseFloat(version.store_version),
         protocol_version: parseFloat(version.protocol_version),
@@ -37,9 +36,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         system_load: cpu_data.load_average_1min,
         used_mem: mem_data.used_mb,
         total_mem: mem_data.total_mb,
-        node_name: nodeName,
+        node_name: process.env.NEXT_PUBLIC_nodeName,
         node_uptime: parseFloat(telemetry.uptime),
-        node_location: nodeLocation,
+        node_location: process.env.NEXT_PUBLIC_nodeLocation,
         stats,
         telemetry_avg: telemetryAvg,
         block_sync: blockSync,

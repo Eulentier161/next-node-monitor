@@ -1,8 +1,11 @@
 import axios from 'axios';
-import { nodeUrl, nodeRpcPort, nodeTcpPort, representativeAccount } from '../config.env';
 
 async function rpcPost<T>(data: any): Promise<T> {
-    const response = await axios.post<T>(`${nodeUrl}:${nodeRpcPort}`, data, {});
+    const response = await axios.post<T>(
+        `${process.env.NEXT_PUBLIC_nodeUrl}:${process.env.NEXT_PUBLIC_nodeRpcPort}`,
+        data,
+        {}
+    );
     return response.data;
 }
 
@@ -10,7 +13,7 @@ export function getTelemetry(): Promise<Telemetry> {
     return rpcPost({
         action: 'telemetry',
         address: '127.0.0.1',
-        port: nodeTcpPort,
+        port: process.env.NEXT_PUBLIC_nodeTcpPort,
     });
 }
 
@@ -25,7 +28,7 @@ export function getVersion(): Promise<Version> {
 export function getAccountInfo(): Promise<AccountInfo> {
     return rpcPost({
         action: 'account_info',
-        account: representativeAccount,
+        account: process.env.NEXT_PUBLIC_representativeAccount,
         representative: true,
         weight: true,
         pending: true,
