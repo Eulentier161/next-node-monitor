@@ -1,8 +1,9 @@
-version: '3'
+version: '3.9'
 services:
     monitor:
-        image: 'eulentier/next-node-monitor'
+        image: 'next-node-monitor'
         restart: 'unless-stopped'
+        build: .
         ports:
             - '3000:3000'
         volumes:
