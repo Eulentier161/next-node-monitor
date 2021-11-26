@@ -1,9 +1,10 @@
-version: '3.9'
+version: '3'
 services:
     monitor:
         image: 'next-node-monitor'
         restart: 'unless-stopped'
         build: .
+        container_name: next-node-monitor
         ports:
             - '3000:3000'
         volumes:
@@ -21,7 +22,7 @@ services:
             - '7072:7072'
             - '7074:7074'
         volumes:
-            - '~:/nod'
+            - '~:/root'
         networks:
             - localvirt
 

@@ -19,16 +19,61 @@ This monitor is build with [Banano](https://banano.cc/) instead of [Nano](https:
 # run this project
 
 -   clone this project
--   run `npm i` inside this projects directory
--   edit `config.ts`
--   if you want to change the themes, edit the theme variables on top of `styles/globals.scss` or try to decipher my awful scss code in `styles/*`
--   run `npm run dev` to start a debugging server
+-   install [Node.js](https://nodejs.org/en/)^16.x
+-   install all dependecies
 
-## run with nodejs server
+```console
+git clone https://github.com/Eulentier161/next-node-monitor
+cd next-node-monitor
+npm ci
+```
 
--   run `npm run build && npm run start` to create an optimized production build and run it
+-   edit `.env`
+-   if you want to change the themes, edit the variables on top of `styles/globals.scss`
 
-## run inside docker
+## "i just want a new running banano node + monitor"
 
--   run `docker build . -t next-node-monitor && docker run next-node-monitor`\
-    the docker setup could need some proper config to make this less annoying for people who want to use it. if you know stuff about docker feel free to help me out.
+-   install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/)
+-   run
+
+```console
+docker-compose up -d
+```
+
+-   visit your monitor on port 3000 :)
+-   if you want to edit the node configuration look inside `/root/BananoData` and follow instructions on the [official wiki page](https://github.com/BananoCoin/banano/wiki/Building-a-Bananode-from-sources#config-nodetoml) of the banano node or read the [nano documentation](https://docs.nano.org/running-a-node/configuration/)
+
+## "i want standalone monitor for my existing banano node"
+
+### run with node.js
+
+-   to start a debugging server run
+
+```console
+npm run dev
+```
+
+-   to run a production build run
+
+```console
+npm run build
+npm run start
+```
+
+### run with docker
+
+-   install [docker](https://docs.docker.com/get-docker/)
+
+```console
+docker build . -t next-node-monitor
+docker run -d --name next-node-monitor next-node-monitor
+```
+
+-   after you pulled an update or made changes to this monitor you'll need to re-build the monitor image and restart or run it
+
+```console
+docker build . -t "next-node-monitor"
+docker restart next-node-monitor || docker run -d --name next-node-monitor next-node-monitor
+```
+
+-   make sure to remove dangling images once in a while if you dont have endless storage
