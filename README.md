@@ -1,79 +1,36 @@
-<p align="center">
-    <a href="https://threema.id/NTFCTHPY">
-        <img src="https://img.shields.io/badge/Threema-NTFCTHPY-green" />
-    </a>
-    <a href="https://github.com/Eulentier161/next-node-monitor/blob/main/LICENSE">
-        <img src="https://img.shields.io/github/license/Eulentier161/next-node-monitor" />
-    </a>
-    <img src="https://img.shields.io/github/languages/code-size/Eulentier161/next-node-monitor" />
-    <a href="https://github.com/Eulentier161/next-node-monitor/actions/workflows/node.js.yml">
-        <img src="https://github.com/Eulentier161/next-node-monitor/actions/workflows/node.js.yml/badge.svg">
-    </a>
-</p>
-<hr />
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-This is a replica of [nanoNodeMonitor](https://github.com/NanoTools/nanoNodeMonitor) written in [TypeScript](https://github.com/microsoft/TypeScript) and [Next.js](https://github.com/vercel/next.js).\
-Instead of [creeper.banano.cc](https://creeper.banano.cc) it redirects to [yellowspyglass.com](https://yellowspyglass.com).\
-This monitor is build with [Banano](https://banano.cc/) instead of [Nano](https://nano.org/) in mind.
+## Getting Started
 
-# run this project
+First, run the development server:
 
--   clone this project
--   install [Node.js](https://nodejs.org/en/)^16.x
--   install all dependecies
-
-```console
-git clone https://github.com/Eulentier161/next-node-monitor
-cd next-node-monitor
-npm ci
-```
-
--   edit `.env`
--   if you want to change the themes, edit the variables on top of `styles/globals.scss`
-
-## "i just want a new running banano node + monitor"
-
--   install [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/)
--   run
-
-```console
-docker-compose up -d
-```
-
--   visit your monitor on port 3000 :)
--   if you want to edit the node configuration look inside `/root/BananoData` and follow instructions on the [official wiki page](https://github.com/BananoCoin/banano/wiki/Building-a-Bananode-from-sources#config-nodetoml) of the banano node or read the [nano documentation](https://docs.nano.org/running-a-node/configuration/)
-
-## "i want standalone monitor for my existing banano node"
-
-### run with node.js
-
--   to start a debugging server run
-
-```console
+```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
--   to run a production build run
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```console
-npm run build
-npm run start
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### run with docker
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
--   install [docker](https://docs.docker.com/get-docker/)
+## Learn More
 
-```console
-docker build . -t next-node-monitor
-docker run -d --name next-node-monitor next-node-monitor
-```
+To learn more about Next.js, take a look at the following resources:
 
--   after you pulled an update or made changes to this monitor you'll need to re-build the monitor image and restart or run it
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-```console
-docker build . -t "next-node-monitor"
-docker restart next-node-monitor || docker run -d --name next-node-monitor next-node-monitor
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
--   make sure to remove dangling images once in a while if you dont have endless storage
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
