@@ -18,7 +18,7 @@ export default function NodeAccount() {
             <div className={styles.wrapper}>
                 <span>Address</span>
                 <Link
-                    href={`https://yellowspyglass.com/account/${process.env.NEXT_PUBLIC_representativeAccount}`}
+                    href={`https://creeper.banano.cc/account/${process.env.NEXT_PUBLIC_representativeAccount}`}
                     passHref>
                     <a target='_blank' rel='noopener noreferrer'>
                         {process.env.NEXT_PUBLIC_representativeAccount}
