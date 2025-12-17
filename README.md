@@ -1,5 +1,14 @@
 # next-node-monitor
 
+<p>
+  <img src=".github/assets/desktop_dark.png" width="80%" />
+  <img src=".github/assets/mobile_dark.png" width="19%" /> 
+</p>
+<p>
+  <img src=".github/assets/desktop_light.png" width="80%" />
+  <img src=".github/assets/mobile_light.png" width="19%" /> 
+</p>
+
 ## Usage
 
 ### Docker Compose
