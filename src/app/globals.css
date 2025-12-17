@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-banano-yellow: #fbdd11;
+  --color-banano-green: #4cbf4b;
+  --color-banano-gray: #2a2a2e;
+  --color-banano-dark-gray: #212124;
+}
+
+h2 {
+  @apply dark:text-banano-yellow text-banano-green text-lg font-bold;
+}
+
+body {
+  @apply dark:bg-banano-dark-gray bg-white;
+  @apply text-banano-dark-gray dark:text-white;
+  @apply font-sans;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "next-node-monitor",
+  "description": "A monitor for a banano crypto currency node.",
+  "license": "MIT",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "prestart": "cp -R public .next/standalone && cp -R .next/static .next/standalone/.next",
+    "start": "node .next/standalone/server.js",
+    "lint": "eslint",
+    "format": "prettier --config ./.prettierrc --write ./src"
+  },
+  "dependencies": {
+    "next": "^16.0.10",
+    "node-cache": "^5.1.2",
+    "node-os-utils": "^2.0.1",
+    "react": "19.2.1",
+    "react-dom": "19.2.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-plugin-react-compiler": "1.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.8",
+    "prettier": "^3.7.4",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "packageManager": "npm@11.7.0+sha512.c22099a6fff8d5b2286c2a09df5352b4858a7c0c716320f58989d60ad8b29ecf2ce6fdfe97ccb41c23ffb1272e1fa079f868487dd6b81d02a2a9e199c095a117"
+}
