@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   // This is needed for compatibility with the OG PHP node monitor
   // some external tooling expects the api endpoint to be api.php
-  rewrites: async () => [{ source: "/api.php", destination: "/api" }],
+  rewrites: async () => [
+    { source: "/api.php", destination: "/api" },
+    { source: "/manifest.json", destination: "/manifest.webmanifest" },
+  ],
   images: {
     remotePatterns: [
       {

@@ -18,7 +18,7 @@ this [`docker-compose.yml`](./docker-compose.yml) will set you up with a running
 ```yml
 services:
   banano-monitor:
-    image: ghcr.io/eulentier161/next-node-monitor:0.1.1
+    image: ghcr.io/eulentier161/next-node-monitor:0.1.2
     restart: unless-stopped
     ports:
       - "127.0.0.1:3000:3000"
