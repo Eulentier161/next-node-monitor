@@ -25,9 +25,9 @@ RUN npm run build
 # Production image, copy all the files and run next
 FROM base AS runner
 
-LABEL org.opencontainers.image.source=https://github.com/eulentier161/next-node-monitor
+LABEL org.opencontainers.image.source="https://github.com/eulentier161/next-node-monitor"
 LABEL org.opencontainers.image.description="A monitor for a banano crypto currency node."
-LABEL org.opencontainers.image.licenses=MIT
+LABEL org.opencontainers.image.licenses="MIT"
 
 WORKDIR /app
 
