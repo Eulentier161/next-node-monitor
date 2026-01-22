@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "monkey.banano.cc",
-        pathname: "/api/v1/monkey/*",
+        pathname: `/api/v1/monkey/${process.env.NODE_REPRESENTATIVE}`,
       },
     ],
     dangerouslyAllowSVG: true,
