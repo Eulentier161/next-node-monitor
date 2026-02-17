@@ -29,7 +29,11 @@ services:
     volumes:
       - ./BananoDockerRoot:/root
     healthcheck:
-      test: ["CMD", "curl", "-d", "'{", '"action":"version"', "}'", "http://127.0.0.1:7072"]
+      test:
+        - "CMD-SHELL"
+        - "bash"
+        - "-c"
+        - "exec 3<>/dev/tcp/127.0.0.1/7072 && printf 'POST / HTTP/1.1\\r\\nHost: localhost:7072\\r\\nContent-Type: application/json\\r\\nContent-Length: 20\\r\\n\\r\\n{\"action\":\"version\"}\\n' >&3 && cat <&3 | grep -q '\"protocol_version\"' && exec 3>&-"
 
 networks:
   default:
