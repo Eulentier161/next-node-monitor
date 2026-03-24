@@ -2,7 +2,7 @@
   "name": "next-node-monitor",
   "description": "A monitor for a banano crypto currency node.",
   "license": "MIT",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,7 @@
     "format": "prettier --config ./.prettierrc --write ./src"
   },
   "dependencies": {
-    "next": "16.1.6",
+    "next": "16.2.1",
     "node-cache": "^5.1.2",
     "node-os-utils": "^2.0.1",
     "react": "19.2.4",
@@ -23,11 +23,11 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.1.6",
+    "eslint-config-next": "16.2.1",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4",
@@ -35,7 +35,7 @@
   },
   "packageManager": "npm@11.8.0+sha512.9f5f6c25e5be44629d907a3c482739c614b090a8505057d9685cd273e12c6172e34aa215d2d97bd9a0d8415bb356f7eb6f2b06c1d690b0d2cdcb9f09d7410149",
   "overrides": {
-    "@types/react": "19.2.10",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3"
   }
 }
