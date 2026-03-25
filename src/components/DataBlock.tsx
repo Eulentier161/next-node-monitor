@@ -1,27 +1,19 @@
-import { ReactNode, Suspense } from "react";
+import { PropsWithChildren, ReactNode, Suspense } from "react";
 
 type Fn = () => Promise<ReactNode>;
 
-export default function DataBlock({
-  title,
-  sections,
-}: {
-  title: string;
-  sections: { title: string; fn: Fn; mono?: boolean }[];
-}) {
+export function DataBlock({ title, children }: PropsWithChildren<{ title: string }>) {
   return (
     <div>
       <h2>{title}</h2>
       <div className="dark:bg-banano-gray rounded border bg-gray-50 *:border-t *:first:border-t-0 dark:border-gray-500 *:dark:border-gray-500">
-        {sections.map(({ title, fn, mono }) => (
-          <Section key={title} title={title} fn={fn} mono={mono} />
-        ))}
+        {children}
       </div>
     </div>
   );
 }
 
-function Section({ title, fn, mono }: { title: string; fn: Fn; mono?: boolean }) {
+export function DataRow({ title, fn, mono }: { title: string; fn: Fn; mono?: boolean }) {
   return (
     <div className="grid grid-cols-2 px-2 py-1">
       <span>{title}</span>

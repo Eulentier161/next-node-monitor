@@ -5,11 +5,11 @@ export default function Footer() {
     <footer className="container mx-auto my-8 px-2 text-center text-sm text-gray-500">
       <p>
         Our{" "}
-        <Link className="underline" target="_blank" href="https://banano.cc/">
+        <Link className="underline" target="_blank" rel="noopener noreferrer" href="https://banano.cc/">
           Banano
         </Link>
         , which art in{" "}
-        <Link className="underline" target="_blank" href="https://kalium.banano.cc/">
+        <Link className="underline" target="_blank" rel="noopener noreferrer" href="https://kalium.banano.cc/">
           Kalium
         </Link>
         , Hallowed be thy Seed. Thy send block come. Thy receive block be done in{" "}

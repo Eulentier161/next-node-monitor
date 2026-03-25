@@ -1,4 +1,4 @@
-import DataBlock from "@/components/DataBlock";
+import { DataBlock, DataRow } from "@/components/DataBlock";
 import NodeAddress from "@/components/NodeAddress";
 import {
   balance,
@@ -39,42 +39,30 @@ export default function Home() {
       <h2>Node Account</h2>
       <NodeAddress representative={process.env.NODE_REPRESENTATIVE!} />
       <div className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-4">
-        <DataBlock
-          title="Node"
-          sections={[
-            { title: "Version", fn: nodeVersion },
-            { title: "Database", fn: databaseVersion },
-            { title: "Node Uptime", fn: uptime },
-            { title: "Peers", fn: peers, mono: true },
-          ]}
-        />
-        <DataBlock
-          title="Blocks"
-          sections={[
-            { title: "Current Blocks", fn: blockCount, mono: true },
-            { title: "Cemented Blocks", fn: cementedCount, mono: true },
-            { title: "Unchecked Blocks", fn: uncheckedCount, mono: true },
-            { title: "Sync Status", fn: syncStatus, mono: true },
-          ]}
-        />
-        <DataBlock
-          title="Account"
-          sections={[
-            { title: "Balance", fn: balance, mono: true },
-            { title: "Pending", fn: pending, mono: true },
-            { title: "Representative", fn: representative, mono: true },
-            { title: "Voting Weight", fn: votingWeight, mono: true },
-          ]}
-        />
-        <DataBlock
-          title="System"
-          sections={[
-            { title: "Host", fn: host },
-            { title: "Location", fn: location },
-            { title: "Load", fn: load, mono: true },
-            { title: "Memory Used", fn: memoryUsed, mono: true },
-          ]}
-        />
+        <DataBlock title="Node">
+          <DataRow title="Version" fn={nodeVersion} />
+          <DataRow title="Database" fn={databaseVersion} />
+          <DataRow title="Node Uptime" fn={uptime} />
+          <DataRow title="Peers" fn={peers} mono />
+        </DataBlock>
+        <DataBlock title="Blocks">
+          <DataRow title="Current Blocks" fn={blockCount} mono />
+          <DataRow title="Cemented Blocks" fn={cementedCount} mono />
+          <DataRow title="Unchecked Blocks" fn={uncheckedCount} mono />
+          <DataRow title="Sync Status" fn={syncStatus} mono />
+        </DataBlock>
+        <DataBlock title="Account">
+          <DataRow title="Balance" fn={balance} mono />
+          <DataRow title="Pending" fn={pending} mono />
+          <DataRow title="Representative" fn={representative} mono />
+          <DataRow title="Voting Weight" fn={votingWeight} mono />
+        </DataBlock>
+        <DataBlock title="System">
+          <DataRow title="Host" fn={host} />
+          <DataRow title="Location" fn={location} />
+          <DataRow title="Load" fn={load} mono />
+          <DataRow title="Memory Used" fn={memoryUsed} mono />
+        </DataBlock>
       </div>
       <hr className="dark:border-banano-yellow/50 border-banano-green/50 my-4" />
     </div>
