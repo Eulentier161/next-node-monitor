@@ -2,7 +2,7 @@
   "name": "next-node-monitor",
   "description": "A monitor for a banano crypto currency node.",
   "license": "MIT",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,11 +13,11 @@
     "format": "prettier --config ./.prettierrc --write ./src"
   },
   "dependencies": {
-    "next": "^16.3.2",
+    "next": "^16.3.4",
     "node-cache": "^5.1.2",
     "node-os-utils": "^2.0.1",
-    "react": "19.2.6",
-    "react-dom": "19.2.6",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "server-only": "^0.0.1"
   },
   "devDependencies": {
@@ -27,7 +27,7 @@
     "@types/react-dom": "19.2.3",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "^16.3.4",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4",
